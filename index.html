@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Limpeza de Texto Avançada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Limpeza de Texto Avançada</h1>
+        <p>Cole aqui seu texto de qualquer fonte. Selecione as opções de limpeza:</p>
+        <textarea id="inputText" placeholder="Cole seu texto aqui..."></textarea>
+        <div id="options"></div>
+        <button class="btn" onclick="processText()">Limpar Texto</button>
+        <h2>Texto Limpo:</h2>
+        <pre id="outputText"></pre>
+        <button class="btn" onclick="copyOutput()">Copiar Resultado</button>
+        <div class="history-block">
+            <h2>Histórico</h2>
+            <div id="history"></div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+    <footer class="footer">
+        Desenvolvido por Thiago Traue ·
+        <a href="https://github.com/traue/web-clean-paste" target="_blank">Ver no GitHub</a>
+    </footer>
+</body>
+
+</html>
