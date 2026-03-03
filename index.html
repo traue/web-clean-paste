@@ -3,27 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Limpeza de Texto Avançada</title>
+    <title>Clean Paste — Limpeza de Texto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ferramenta para limpar e normalizar textos copiados de qualquer fonte.">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Limpeza de Texto Avançada</h1>
-        <p>Cole aqui seu texto de qualquer fonte. Selecione as opções de limpeza:</p>
-        <textarea id="inputText" placeholder="Cole seu texto aqui..." aria-label="Texto de entrada"></textarea>
-        <div id="options"></div>
-        <button class="btn" onclick="processText()">Limpar Texto</button>
-        <h2>Texto Limpo:</h2>
-        <pre id="outputText" aria-label="Texto limpo"></pre>
-        <button class="btn" onclick="copyOutput()">Copiar Resultado</button>
-        <details class="history-block" id="historyAccordion">
-            <summary class="history-summary">Histórico <span id="historyCount"></span></summary>
+    <header class="top-header">
+        <div class="header-content">
+            <h1>✨ Clean Paste</h1>
+            <p class="subtitle">Cole, limpe e copie textos sem formatação indesejada</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Seção de Entrada -->
+        <section class="card">
+            <label class="section-label" for="inputText">📥 Texto original</label>
+            <p class="section-hint">Cole aqui o texto que deseja limpar (de e-mails, PDFs, sites, etc.)</p>
+            <textarea id="inputText" placeholder="Cole seu texto aqui..." aria-label="Texto de entrada"></textarea>
+        </section>
+
+        <!-- Opções de Limpeza -->
+        <section class="card">
+            <details class="options-accordion" open>
+                <summary class="section-label clickable">⚙️ Opções de limpeza</summary>
+                <p class="section-hint">Escolha quais transformações aplicar ao texto</p>
+                <div id="options"></div>
+            </details>
+        </section>
+
+        <!-- Botões de Ação -->
+        <div class="actions-bar">
+            <button class="btn btn-primary" onclick="processText()" title="Aplica as opções de limpeza selecionadas ao texto">
+                🧹 Limpar texto
+            </button>
+            <button class="btn btn-accent" onclick="processAndCopy()" title="Limpa o texto e copia o resultado automaticamente">
+                🧹📋 Limpar e copiar
+            </button>
+            <button class="btn btn-secondary" onclick="copyOutput()" title="Copia o resultado já processado para a área de transferência">
+                📋 Copiar resultado
+            </button>
+        </div>
+
+        <!-- Seção de Resultado -->
+        <section class="card">
+            <label class="section-label">📤 Resultado</label>
+            <p class="section-hint">Texto processado aparece aqui</p>
+            <pre id="outputText" aria-label="Texto limpo"></pre>
+        </section>
+
+        <!-- Histórico -->
+        <details class="card history-block" id="historyAccordion">
+            <summary class="history-summary">🕘 Histórico <span id="historyCount"></span></summary>
             <div id="history"></div>
         </details>
-    </div>
+    </main>
 
     <footer class="footer">
         Desenvolvido por Thiago Traue ·

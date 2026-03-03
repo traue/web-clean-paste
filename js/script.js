@@ -175,6 +175,29 @@ function copyOutput() {
     });
 }
 
+// Limpar e copiar em uma única ação
+function processAndCopy() {
+    const inputEl = document.getElementById('inputText');
+    let text = inputEl.value;
+    if (!text.trim()) {
+        showNotification('Cole um texto antes de limpar.', 'error');
+        return;
+    }
+    const selected = options.filter(opt => document.getElementById(opt.id).checked);
+    if (!selected.length) {
+        showNotification('Selecione ao menos uma opção de limpeza.', 'error');
+        return;
+    }
+    selected.forEach(opt => { text = opt.fn(text); });
+    document.getElementById('outputText').textContent = text;
+    addToHistory(inputEl.value, text, selected.map(o => o.label));
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification('Texto limpo e copiado!');
+    }).catch(() => {
+        showNotification('Texto limpo, mas erro ao copiar.', 'error');
+    });
+}
+
 // Copiar item do histórico pelo índice
 function copyHistoryItem(index) {
     const hist = JSON.parse(localStorage.getItem('textCleanerHistory') || "[]");
@@ -226,7 +249,7 @@ function renderHistory() {
     countEl.textContent = `(${hist.length})`;
 
     // Botão para limpar todo o histórico
-    let html = `<button class="btn" onclick="clearHistory()" style="margin-bottom:16px;">Limpar Todo o Histórico</button>`;
+    let html = `<button class="btn btn-secondary" onclick="clearHistory()" style="margin-bottom:16px;">🗑️ Limpar Todo o Histórico</button>`;
     html += hist.map((item, i) => {
         const safeOrig = escapeHTML(item.orig);
         const safeCleaned = escapeHTML(item.cleaned);

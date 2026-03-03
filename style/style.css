@@ -1,188 +1,318 @@
+/* ===== Base ===== */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #181c20;
-    color: #eee;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #0f1117;
+    color: #e2e6ef;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 * {
     box-sizing: border-box;
 }
 
-.container {
-    width: 90vw;
-    max-width: 960px;
-    margin: 40px auto;
-    background: #23272f;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px #0007;
-    padding: 32px;
-    transition: width 0.2s;
+/* ===== Header ===== */
+.top-header {
+    background: linear-gradient(135deg, #161b26 0%, #1a2233 100%);
+    border-bottom: 1px solid #252d3d;
+    padding: 32px 20px 24px;
+    text-align: center;
 }
 
+.header-content h1 {
+    font-size: 2.2em;
+    margin: 0 0 6px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: #8899bb;
+    font-size: 1.05em;
+    margin: 0;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 90vw;
+    max-width: 820px;
+    margin: 28px auto 0;
+    padding: 0 0 32px;
+}
+
+/* ===== Cards ===== */
+.card {
+    background: #181d28;
+    border: 1px solid #252d3d;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+}
+
+.section-label {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #c0ccee;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.section-label.clickable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.section-hint {
+    color: #6b7a99;
+    font-size: 0.88em;
+    margin: 0 0 12px;
+}
+
+/* ===== Textarea & Pre ===== */
 pre, textarea {
     white-space: pre-wrap;
     word-break: break-word;
-}
-
-h1 {
-    font-size: 2em;
-    margin-bottom: 8px;
-    color: #39e;
 }
 
 textarea,
 pre {
     width: 100%;
     min-height: 120px;
-    background: #16181d;
-    color: #eaeaea;
-    font-size: 1.08em;
-    border: 1.5px solid #444b57;
+    background: #111520;
+    color: #e0e4ee;
+    font-size: 1em;
+    border: 1.5px solid #2a3348;
     border-radius: 10px;
-    padding: 8px;
+    padding: 12px 14px;
     resize: vertical;
-    margin-bottom: 18px;
-    font-family: 'Fira Mono', 'Consolas', monospace;
+    margin-bottom: 0;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    transition: border-color 0.2s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4a8cff;
+    box-shadow: 0 0 0 3px #4a8cff22;
+}
+
+pre#outputText {
+    min-height: 80px;
+    border-color: #2a3348;
+    background: #111520;
+}
+
+/* ===== Options accordion ===== */
+.options-accordion {
+    margin: 0;
+}
+
+.options-accordion > summary {
+    list-style: none;
+}
+
+.options-accordion > summary::-webkit-details-marker {
+    display: none;
+}
+
+.options-accordion > summary::after {
+    content: '▾';
+    float: right;
+    font-size: 0.85em;
+    color: #6b7a99;
+    transition: transform 0.2s;
+}
+
+.options-accordion:not([open]) > summary::after {
+    transform: rotate(-90deg);
 }
 
 .options-toolbar {
     display: flex;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .btn-small {
-    padding: 6px 14px;
-    font-size: 0.9em;
+    padding: 5px 14px;
+    font-size: 0.85em;
     margin: 0;
+    background: #252d3d;
+    color: #a0b0d0;
+    border: 1px solid #333d55;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-small:hover {
+    background: #2e3a52;
+    color: #d0ddff;
 }
 
 label.option {
     display: flex;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
     cursor: pointer;
-    font-size: 1em;
-    gap: 6px;
+    font-size: 0.95em;
+    gap: 8px;
+    color: #c0c8dd;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background 0.12s;
+}
+
+label.option:hover {
+    background: #1e2636;
 }
 
 label.option input[type="checkbox"] {
-    accent-color: #39e;
-    width: 20px;
-    height: 20px;
+    accent-color: #4a8cff;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
 }
 
 .tooltip {
     position: relative;
     cursor: pointer;
-    margin-left: 5px;
-    font-size: 1.1em;
+    margin-left: 4px;
+    font-size: 0.95em;
+    color: #6b7a99;
 }
 
 .tooltip-text {
     display: none;
     position: absolute;
     left: 24px;
-    top: 0;
-    background: #181d24;
-    color: #aad;
-    padding: 6px 12px;
+    top: -4px;
+    background: #1c2235;
+    color: #a0b4dd;
+    padding: 6px 14px;
     border-radius: 8px;
-    font-size: .96em;
+    font-size: .9em;
     white-space: nowrap;
     z-index: 10;
-    box-shadow: 0 2px 8px #0006;
+    box-shadow: 0 4px 16px #00000044;
+    border: 1px solid #2a3348;
 }
 
 .tooltip:hover .tooltip-text {
     display: block;
 }
 
+/* ===== Action Buttons ===== */
+.actions-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
 .btn {
-    background: linear-gradient(90deg, #2a8fff, #30cfff);
-    color: #fff;
     border: none;
-    border-radius: 12px;
-    padding: 12px 30px;
-    font-size: 1.08em;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1em;
     cursor: pointer;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: filter .13s;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: transform 0.1s, box-shadow 0.15s, filter 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .btn:hover {
-    filter: brightness(1.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px #00000033;
 }
 
-/* Histórico - Accordion principal */
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b7dff, #5a9cff);
+    color: #fff;
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #252d3d;
+    color: #b0c0e0;
+    border: 1px solid #333d55;
+}
+
+.btn-secondary:hover {
+    background: #2e3a52;
+    color: #d0ddff;
+}
+
+/* ===== Histórico ===== */
 .history-block {
-    margin-top: 35px;
-    border: 1.5px solid #333a45;
-    border-radius: 12px;
+    margin-top: 6px;
     overflow: hidden;
 }
 
 .history-summary {
-    font-size: 1.3em;
-    font-weight: 700;
-    color: #39e;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #c0ccee;
     cursor: pointer;
-    padding: 16px 20px;
-    background: #1e222a;
+    padding: 0;
     user-select: none;
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: background 0.15s;
-}
-
-.history-summary:hover {
-    background: #252a34;
-}
-
-.history-summary::before {
-    content: '▸';
-    display: inline-block;
-    transition: transform 0.2s;
-    font-size: 0.85em;
-}
-
-.history-block[open] > .history-summary::before {
-    transform: rotate(90deg);
+    gap: 8px;
 }
 
 .history-summary::-webkit-details-marker {
     display: none;
 }
 
+.history-summary::after {
+    content: '▾';
+    font-size: 0.8em;
+    color: #6b7a99;
+    transition: transform 0.2s;
+}
+
+.history-block:not([open]) > .history-summary::after {
+    transform: rotate(-90deg);
+}
+
 #historyCount {
-    font-size: 0.75em;
-    color: #7ab;
+    font-size: 0.78em;
+    color: #6b7a99;
     font-weight: 400;
 }
 
 #history {
-    padding: 16px 20px;
+    padding: 16px 0 0;
 }
 
 /* Cada item do histórico como accordion */
 .history-entry-accordion {
-    background: #15181d;
-    border-radius: 8px;
+    background: #111520;
+    border-radius: 10px;
     margin-bottom: 10px;
-    border-left: 3px solid #30cfff;
+    border-left: 3px solid #4a8cff;
     overflow: hidden;
     transition: box-shadow 0.15s;
 }
 
 .history-entry-accordion[open] {
-    box-shadow: 0 2px 12px #0005;
+    box-shadow: 0 2px 12px #00000033;
 }
 
 .history-entry-summary {
@@ -193,19 +323,19 @@ label.option input[type="checkbox"] {
     gap: 14px;
     user-select: none;
     list-style: none;
-    font-size: 0.98em;
+    font-size: 0.95em;
     transition: background 0.12s;
 }
 
 .history-entry-summary:hover {
-    background: #1a1e26;
+    background: #161c2a;
 }
 
 .history-entry-summary::before {
     content: '▸';
     display: inline-block;
     transition: transform 0.2s;
-    color: #30cfff;
+    color: #4a8cff;
     font-size: 0.8em;
     flex-shrink: 0;
 }
@@ -219,15 +349,15 @@ label.option input[type="checkbox"] {
 }
 
 .history-entry-date {
-    color: #7ab;
-    font-size: 0.9em;
+    color: #6b7a99;
+    font-size: 0.88em;
     white-space: nowrap;
     flex-shrink: 0;
 }
 
 .history-entry-preview {
-    color: #bbb;
-    font-size: 0.92em;
+    color: #99a3b8;
+    font-size: 0.9em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -236,7 +366,7 @@ label.option input[type="checkbox"] {
 
 .history-entry-body {
     padding: 8px 15px 15px;
-    border-top: 1px solid #2a2f3a;
+    border-top: 1px solid #1e2636;
 }
 
 .history-detail {
@@ -244,15 +374,15 @@ label.option input[type="checkbox"] {
 }
 
 .history-detail strong {
-    color: #8bc;
+    color: #8899bb;
 }
 
 .history-text {
-    background: #11141a;
-    border: 1px solid #2a2f3a;
-    border-radius: 6px;
+    background: #0d1018;
+    border: 1px solid #1e2636;
+    border-radius: 8px;
     padding: 8px 10px;
-    font-size: 0.92em;
+    font-size: 0.9em;
     margin-top: 4px;
     max-height: 150px;
     overflow-y: auto;
@@ -266,29 +396,34 @@ label.option input[type="checkbox"] {
 }
 
 .copy-btn {
-    background: #2a8fffcc;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
+    background: #252d3d;
+    color: #b0c0e0;
+    border: 1px solid #333d55;
+    border-radius: 8px;
     padding: 5px 14px;
-    font-size: .93em;
+    font-size: 0.9em;
     cursor: pointer;
-    transition: filter .13s;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
 }
 
 .copy-btn:hover {
-    filter: brightness(1.2);
+    background: #2e3a52;
+    color: #d0ddff;
 }
 
 .btn-delete {
-    background: #ff5252cc;
+    background: transparent;
+    border: 1px solid #5c2a2a;
+    color: #ff6b6b;
 }
 
 .btn-delete:hover {
-    background: #ff3333;
+    background: #3a1515;
+    color: #ff8888;
 }
 
-/* Notificação toast */
+/* ===== Notificação toast ===== */
 .notification {
     position: fixed;
     bottom: 30px;
@@ -296,20 +431,21 @@ label.option input[type="checkbox"] {
     transform: translateX(-50%);
     padding: 12px 28px;
     border-radius: 10px;
-    font-size: 1.05em;
+    font-size: 1em;
     font-weight: 600;
     z-index: 1000;
     animation: fadeInOut 2.2s ease forwards;
     pointer-events: none;
+    backdrop-filter: blur(8px);
 }
 
 .notification-success {
-    background: #1db954dd;
+    background: #10b981dd;
     color: #fff;
 }
 
 .notification-error {
-    background: #e53935dd;
+    background: #ef4444dd;
     color: #fff;
 }
 
@@ -320,35 +456,54 @@ label.option input[type="checkbox"] {
     100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
 }
 
+/* ===== Footer ===== */
 .footer {
     width: 100%;
     text-align: center;
-    padding: 18px 8px 12px 8px;
-    font-size: 1.08em;
-    color: #aabbcc;
-    background: #181c20;
-    position: relative;
-    margin-top: 40px;
+    padding: 24px 8px 18px;
+    font-size: 0.92em;
+    color: #6b7a99;
+    background: #0f1117;
+    margin-top: 12px;
 }
 
 .footer a {
-    color: #38c6ff;
+    color: #5a9cff;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
 }
+
 .footer a:hover {
-    color: #30cfff;
+    color: #7db5ff;
     text-decoration: underline;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 600px) {
-    .container { 
-        padding: 13px; 
-        width: 98vw;
+    .top-header {
+        padding: 22px 16px 18px;
+    }
+    .header-content h1 {
+        font-size: 1.5em;
+    }
+    .container {
+        width: 96vw;
+        padding: 0 0 20px;
+    }
+    .card {
+        padding: 16px;
+        border-radius: 10px;
     }
     textarea, pre {
         min-height: 80px;
+    }
+    .actions-bar {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+        justify-content: center;
     }
     .history-entry-summary {
         flex-direction: column;
@@ -359,7 +514,7 @@ label.option input[type="checkbox"] {
         white-space: normal;
     }
     #history {
-        padding: 10px 12px;
+        padding: 10px 0 0;
     }
     .history-entry-actions {
         flex-wrap: wrap;
