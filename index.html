@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -13,58 +13,66 @@
 <body>
     <header class="top-header">
         <div class="header-content">
-            <h1>✨ Clean Paste</h1>
+            <h1>Clean Paste</h1>
             <p class="subtitle">Cole, limpe e copie textos sem formatação indesejada</p>
+        </div>
+        <div class="header-actions">
+            <button id="langToggle" class="btn-icon" onclick="toggleLang()" title="Switch language">🌐 EN</button>
+            <button id="themeToggle" class="btn-icon" onclick="toggleTheme()" title="Alternar tema">☀️</button>
         </div>
     </header>
 
     <main class="container">
         <!-- Seção de Entrada -->
         <section class="card">
-            <label class="section-label" for="inputText">📥 Texto original</label>
-            <p class="section-hint">Cole aqui o texto que deseja limpar (de e-mails, PDFs, sites, etc.)</p>
+            <label class="section-label" for="inputText">📥 <span class="input-label-text">Texto original</span></label>
+            <p class="section-hint input-hint">Cole aqui o texto que deseja limpar (de e-mails, PDFs, sites, IAs, etc.)</p>
             <textarea id="inputText" placeholder="Cole seu texto aqui..." aria-label="Texto de entrada"></textarea>
         </section>
 
         <!-- Opções de Limpeza -->
         <section class="card">
-            <details class="options-accordion" open>
-                <summary class="section-label clickable">⚙️ Opções de limpeza</summary>
-                <p class="section-hint">Escolha quais transformações aplicar ao texto</p>
+            <details class="options-accordion">
+                <summary class="section-label clickable"><span class="options-label-text">⚙️ Opções de limpeza</span></summary>
+                <p class="section-hint options-hint">Escolha quais transformações aplicar ao texto</p>
                 <div id="options"></div>
             </details>
         </section>
 
         <!-- Botões de Ação -->
         <div class="actions-bar">
-            <button class="btn btn-primary" onclick="processText()" title="Aplica as opções de limpeza selecionadas ao texto">
+            <button id="btnClean" class="btn btn-primary" onclick="processText()" title="Aplica as opções de limpeza selecionadas ao texto">
                 🧹 Limpar texto
             </button>
-            <button class="btn btn-accent" onclick="processAndCopy()" title="Limpa o texto e copia o resultado automaticamente">
+            <button id="btnCleanCopy" class="btn btn-accent" onclick="processAndCopy()" title="Limpa o texto e copia o resultado automaticamente">
                 🧹📋 Limpar e copiar
             </button>
-            <button class="btn btn-secondary" onclick="copyOutput()" title="Copia o resultado já processado para a área de transferência">
+            <button id="btnCopyResult" class="btn btn-secondary" onclick="copyOutput()" title="Copia o resultado já processado para a área de transferência">
                 📋 Copiar resultado
             </button>
         </div>
 
         <!-- Seção de Resultado -->
         <section class="card">
-            <label class="section-label">📤 Resultado</label>
-            <p class="section-hint">Texto processado aparece aqui</p>
+            <label class="section-label output-label">📤 Resultado</label>
+            <p class="section-hint output-hint">Texto processado aparece aqui</p>
             <pre id="outputText" aria-label="Texto limpo"></pre>
         </section>
 
         <!-- Histórico -->
         <details class="card history-block" id="historyAccordion">
-            <summary class="history-summary">🕘 Histórico <span id="historyCount"></span></summary>
+            <summary class="history-summary"><span class="history-label-text">🕘 Histórico</span> <span id="historyCount"></span></summary>
             <div id="history"></div>
         </details>
     </main>
 
     <footer class="footer">
-        Desenvolvido por Thiago Traue ·
-        <a href="https://github.com/traue/web-clean-paste" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+        <span class="footer-dev">Desenvolvido por Thiago Traue</span> ·
+        <a class="footer-gh" href="https://github.com/traue/web-clean-paste" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+        ·
+        <a href="https://buymeacoffee.com/traue" target="_blank" rel="noopener noreferrer" class="bmc-link">
+            ☕ Buy me a coffee
+        </a>
     </footer>
 
     <script src="js/script.js"></script>
